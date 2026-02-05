@@ -1,0 +1,17 @@
+name: volcano-monitoring
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy
+  - scipy
+  - pandas
+  - xarray
+  - matplotlib
+  - seaborn
+  - obspy
+  - jupyter
+  - pip
+  - pip:
+    - -r requirements.txt

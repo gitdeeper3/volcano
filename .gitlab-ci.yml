@@ -1,0 +1,92 @@
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+.test: &test_template
+  stage: test
+  image: python:3.11
+  before_script:
+    - python -m pip install --upgrade pip
+    - pip install pytest pytest-cov black flake8 mypy
+    - pip install -e .
+  script:
+    - black --check src/ tests/
+    - flake8 src/ tests/
+    - mypy src/
+    - pytest tests/ --cov=src --cov-report=xml
+
+test-python38:
+  <<: *test_template
+  image: python:3.8
+
+test-python39:
+  <<: *test_template
+  image: python:3.9
+
+test-python310:
+  <<: *test_template
+  image: python:3.10
+
+test-python311:
+  <<: *test_template
+  image: python:3.11
+
+build-package:
+  stage: build
+  image: python:3.11
+  script:
+    - pip install build
+    - python -m build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+
+publish-pypi:
+  stage: deploy
+  image: python:3.11
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v/
+  script:
+    - pip install build twine
+    - python -m build
+    - twine upload dist/* --username __token__ --password $PYPI_TOKEN
+  dependencies:
+    - build-package
+
+docker-build:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v/
+
+pages:
+  stage: deploy
+  image: python:3.11
+  script:
+    - pip install sphinx sphinx-rtd-theme
+    - cd docs && make html
+    - mv _build/html/ ../public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main

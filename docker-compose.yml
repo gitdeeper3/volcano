@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  volcano-monitoring:
+    build: .
+    image: volcano-monitoring:latest
+    container_name: volcano-framework
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+      - ./results:/app/results
+      - ./reports:/app/reports
+    ports:
+      - "8050:8050"  # Dashboard port
+    environment:
+      - LOG_LEVEL=INFO
+      - MONITORING_INTERVAL=3600
+      - DATABASE_URL=sqlite:///data/volcano.db
+    restart: unless-stopped
+    networks:
+      - volcano-net
+
+  volcano-database:
+    image: postgres:15
+    container_name: volcano-db
+    environment:
+      - POSTGRES_DB=volcano
+      - POSTGRES_USER=volcano_user
+      - POSTGRES_PASSWORD=volcano_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - volcano-net
+    restart: unless-stopped
+
+  volcano-redis:
+    image: redis:7-alpine
+    container_name: volcano-cache
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - volcano-net
+    restart: unless-stopped
+
+  volcano-dashboard:
+    build: .
+    image: volcano-monitoring:latest
+    container_name: volcano-dashboard
+    command: python src/visualization/dashboard.py
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+    environment:
+      - DASHBOARD_PORT=8050
+      - REDIS_URL=redis://volcano-redis:6379/0
+    depends_on:
+      - volcano-redis
+    networks:
+      - volcano-net
+    restart: unless-stopped
+
+networks:
+  volcano-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:

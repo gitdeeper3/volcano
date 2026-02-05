@@ -1,0 +1,62 @@
+# List of monitored volcanoes with metadata
+
+volcanoes:
+  Etna:
+    country: Italy
+    type: Stratovolcano
+    elevation: 3329
+    last_eruption: 2023
+    status: Active
+    coordinates:
+      lat: 37.7510
+      lon: 14.9934
+    monitoring_stations: 12
+    parameters_available: [seismic, deformation, gas, thermal]
+    
+  Stromboli:
+    country: Italy
+    type: Stratovolcano
+    elevation: 924
+    last_eruption: 2023
+    status: Active
+    coordinates:
+      lat: 38.7890
+      lon: 15.2130
+    monitoring_stations: 8
+    parameters_available: [seismic, deformation, thermal]
+    
+  Merapi:
+    country: Indonesia
+    type: Stratovolcano
+    elevation: 2911
+    last_eruption: 2023
+    status: Active
+    coordinates:
+      lat: -7.5400
+      lon: 110.4440
+    monitoring_stations: 15
+    parameters_available: [seismic, deformation, gas, hydrochemical]
+    
+  Kilauea:
+    country: USA
+    type: Shield
+    elevation: 1247
+    last_eruption: 2023
+    status: Active
+    coordinates:
+      lat: 19.4210
+      lon: -155.2870
+    monitoring_stations: 20
+    parameters_available: [seismic, deformation, gas, thermal, geodetic]
+    
+  Eyjafjallajokull:
+    country: Iceland
+    type: Stratovolcano
+    elevation: 1666
+    last_eruption: 2010
+    status: Dormant
+    coordinates:
+      lat: 63.6330
+      lon: -19.6330
+    monitoring_stations: 6
+    parameters_available: [seismic, deformation]

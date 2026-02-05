@@ -1,0 +1,48 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Python files
+*.py text diff=python
+
+# Documentation
+*.md text
+*.txt text
+*.rst text
+
+# Configuration files
+*.yaml text
+*.yml text
+*.json text
+*.toml text
+*.cfg text
+*.ini text
+
+# Data files (binary)
+*.pdf binary
+*.h5 binary
+*.hdf5 binary
+*.nc binary
+*.nc4 binary
+*.mat binary
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+
+# Archives
+*.zip binary
+*.tar binary
+*.gz binary
+
+# Executables
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Git LFS tracking for large files
+# *.pdf filter=lfs diff=lfs merge=lfs -text
+# *.h5 filter=lfs diff=lfs merge=lfs -text

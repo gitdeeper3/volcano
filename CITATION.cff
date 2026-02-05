@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Baladi"
+    given-names: "Samir"
+    orcid: "https://orcid.org/0009-0003-8903-0029"
+title: "Multi-Parameter Volcanic Unrest Monitoring Framework"
+version: 1.0.0
+doi: 10.5281/zenodo.xxxxxxx
+date-released: 2026-02-05
+url: "https://gitlab.com/gitdeeper3/volcano"
+repository-code: "https://gitlab.com/gitdeeper3/volcano"
+license: MIT

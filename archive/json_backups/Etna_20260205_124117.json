@@ -1,0 +1,47 @@
+{
+  "volcano": "Etna",
+  "timestamp": "2026-02-05T12:41:17.553811",
+  "alert_level": "\ud83d\udfe0 WARNING",
+  "color": "orange",
+  "state_vector": [
+    0.42150814213367,
+    0.7558671286438803,
+    0.6119828023046997,
+    0.3386636354262389,
+    0.331724095399881,
+    0.283181719405604,
+    0.4148470555691387,
+    0.22066526677097756,
+    0.5641868667609093
+  ],
+  "eruption_probability": 0.5377151202389356,
+  "threshold_status": {
+    "warning": "True",
+    "critical": "False",
+    "alert": "False"
+  },
+  "parameter_values": {
+    "S": 0.42150814213367,
+    "P": 0.7558671286438803,
+    "G": 0.6119828023046997,
+    "D": 0.3386636354262389,
+    "H": 0.331724095399881,
+    "E": 0.283181719405604,
+    "W": 0.4148470555691387,
+    "L": 0.22066526677097756,
+    "R": 0.5641868667609093
+  },
+  "recommendations": [
+    "Increase monitoring frequency to every 6 hours",
+    "Notify observatory staff and scientists",
+    "Review emergency response protocols",
+    "Check communication and monitoring equipment",
+    "Inform local government officials"
+  ],
+  "next_assessment": "2026-02-05T13:41:17.553830",
+  "metadata": {
+    "framework_version": "1.0.0",
+    "parameters_calculated": 9,
+    "total_parameters": 9
+  }
+}

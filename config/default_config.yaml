@@ -1,0 +1,44 @@
+# Default configuration for volcano monitoring framework
+
+# Parameter weights (sum to 1.0)
+parameter_weights:
+  seismic_pulse: 0.15    # S(t) - Seismic activity
+  pressure: 0.12         # P(t) - Pressure changes
+  gas_flux: 0.13         # G(t) - Gas emissions
+  deformation: 0.14      # D(t) - Surface deformation
+  heat: 0.09             # H(t) - Thermal anomalies
+  electrokinetic: 0.08   # E(t) - Self-potential
+  water_flow: 0.07       # W(t) - Hydrothermal
+  lyapunov: 0.11         # L(t) - Chaos indicator
+  resistivity: 0.11      # R(t) - Resistivity changes
+
+# Alert thresholds (0.0 to 1.0)
+thresholds:
+  background: 0.3        # Normal activity
+  unrest: 0.5            # Elevated activity
+  critical: 0.7          # Critical state
+  imminent: 0.85         # Imminent eruption
+
+# Monitoring settings
+monitoring:
+  interval: 3600         # Monitoring interval in seconds
+  realtime: false        # Real-time monitoring
+  save_reports: true     # Save reports to disk
+  report_format: json    # json, yaml, or txt
+
+# Data processing
+processing:
+  smoothing_window: 24    # Hours for moving average
+  normalization: zscore   # zscore, minmax, or robust
+  outlier_removal: true   # Remove statistical outliers
+  interpolation: linear   # linear, cubic, or nearest
+
+# Output settings
+output:
+  directory: ./results
+  reports: ./results/reports
+  figures: ./results/figures
+  logs: ./results/logs
+  format: 
+    date: "%Y-%m-%d"
+    time: "%H:%M:%S"

@@ -1,0 +1,61 @@
+# Parameter weighting coefficients for different volcano types
+
+# General weights (used as default)
+general:
+  seismic_pulse: 0.15
+  pressure: 0.12
+  gas_flux: 0.13
+  deformation: 0.14
+  heat: 0.09
+  electrokinetic: 0.08
+  water_flow: 0.07
+  lyapunov: 0.11
+  resistivity: 0.11
+
+# Weights for stratovolcanoes (explosive eruptions)
+stratovolcano:
+  seismic_pulse: 0.18
+  pressure: 0.15
+  gas_flux: 0.16
+  deformation: 0.12
+  heat: 0.07
+  electrokinetic: 0.06
+  water_flow: 0.05
+  lyapunov: 0.12
+  resistivity: 0.09
+
+# Weights for shield volcanoes (effusive eruptions)
+shield:
+  seismic_pulse: 0.12
+  pressure: 0.08
+  gas_flux: 0.10
+  deformation: 0.20
+  heat: 0.15
+  electrokinetic: 0.05
+  water_flow: 0.04
+  lyapunov: 0.08
+  resistivity: 0.18
+
+# Weights for calderas (large systems)
+caldera:
+  seismic_pulse: 0.14
+  pressure: 0.16
+  gas_flux: 0.14
+  deformation: 0.18
+  heat: 0.08
+  electrokinetic: 0.07
+  water_flow: 0.06
+  lyapunov: 0.10
+  resistivity: 0.07
+
+# Weights for hydrothermal systems
+hydrothermal:
+  seismic_pulse: 0.10
+  pressure: 0.08
+  gas_flux: 0.20
+  deformation: 0.05
+  heat: 0.25
+  electrokinetic: 0.15
+  water_flow: 0.12
+  lyapunov: 0.03
+  resistivity: 0.02
