@@ -484,7 +484,8 @@ If you use this framework in your research, please cite:
 
 ## 👥 Authors
 
-**Principal Investigator**: Samir Baladi
+**Principal Investigator**: 
+Samir Baladi
 
 - ORCID: [0009-0003-8903-0029](https://orcid.org/0009-0003-8903-0029)
 - Email: gitdeeper@gmail.com
