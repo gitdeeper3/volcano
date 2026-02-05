@@ -496,7 +496,7 @@ If you use this framework in your research, please cite:
 
 - **Email**: gitdeeper@gmail.com
 - **GitLab**: https://gitlab.com/gitdeeper3/volcano
-- **GitHub**: https://github.com/emerladcompass/Volcano
+- **GitHub**: https://github.com/gitdeeper3/volcano
 - **Codeberg**: https://codeberg.org/gitdeeper2/volcano
 - **Bitbucket**: https://bitbucket.org/gitdeeper3/volcano
 - **Issues**: Please report bugs and feature requests via GitLab Issues
